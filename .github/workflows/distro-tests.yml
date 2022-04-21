@@ -1,0 +1,106 @@
+name: tests for common distros
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '42 3 * * *'
+
+jobs:
+  distro-tests:
+    name: Build tests for PHP ${{ matrix.php-version }} on ${{ matrix.distro.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: [ '8.1', '8.0' ]
+        distro:
+          - name: CentOS 7
+            image: centos:7
+            pkg: yum
+          # CentOS 8 died
+          #- name: CentOS 8
+          #  image: centos:8
+          #  pkg: yum
+          - name: AlmaLinux
+            image: almalinux
+            pkg: dnf
+          - name: Rocky Linux
+            image: rockylinux
+            pkg: dnf
+          - name: Fedora
+            image: fedora
+            pkg: dnf
+          - name: Fedora rawhide
+            image: fedora:rawhide
+            pkg: dnf
+          - name: Archlinux
+            image: archlinux
+            pkg: pacman
+          - name: Alpine
+            image: alpine
+            pkg: apk
+          - name: Alpine Edge
+            image: alpine:edge
+            pkg: apk
+          - name: Debian
+            image: debian:stable-slim
+            pkg: apt
+          - name: Debian sid
+            image: debian:sid-slim
+            pkg: apt
+          - name: openSUSE Leap
+            image: opensuse/leap
+            pkg: zypper
+          - name: openSUSE Tumbleweed
+            image: opensuse/tumbleweed
+            pkg: zypper
+      max-parallel: 12
+      fail-fast: false
+    steps:
+      - name: Prepare Swow codes
+        uses: actions/checkout@v2
+        with:
+          path: swow
+      - name: Prepare cache PHP source
+        id: cacheprepare
+        shell: bash
+        run: |
+          infojson=$(curl 'https://www.php.net/releases/?json&version=${{ matrix.php-version }}')
+          if [ "$(echo "$infojson" | jq -r '.error')" != 'null' ]
+          then
+            echo ::warning::PHP version ${{ matrix.php-version }} is not found in releases, it may not be released.
+          else
+            echo "::set-output name=phpfn::"$(echo "${infojson}" | jq -r '.source[] | select( .filename | endswith("tar.xz")) | .filename')
+          fi
+      - name: Cache PHP codes
+        if: steps.cacheprepare.outputs.phpfn
+        uses: actions/cache@v2
+        with:
+          key: phpcode-v2-${{steps.cacheprepare.outputs.phpfn}}
+          path: |
+            ${{steps.cacheprepare.outputs.phpfn}}
+      - name: Prepare PHP codes
+        shell: bash
+        run: |
+          fn='${{steps.cacheprepare.outputs.phpfn}}'
+          if [ "$fn" != "" ]
+          then
+            if [ ! -f "$fn" ]
+            then
+              wget https://www.php.net/distributions/${fn}
+            fi
+            mkdir php-src
+            tar xf "${fn}" -C php-src --strip-components=1
+          else
+            git clone --single-branch --branch PHP-${{ matrix.php-version }} --depth 1 https://github.com/php/php-src php-src
+          fi
+      - name: Build things
+        run: |
+          docker run --rm --name testcontainer \
+            ${{ matrix.distro.image == 'opensuse/tumbleweed' && '--privileged' || '' }} \
+            --cap-add=SYS_NICE \
+            --cap-add=IPC_LOCK \
+            -v `realpath php-src`:/src/php-src:rw,rshared \
+            -v `realpath swow`:/src/swow:rw,rshared \
+            -v `realpath swow/.github/workflows/distro-installer.sh`:/distro-installer.sh:ro \
+            -e CI=true \
+            ${{ matrix.distro.image }} ${{ matrix.distro.pkg == 'apt' && '/bin/bash ' || ''}}/distro-installer.sh ${{ matrix.distro.pkg }}
