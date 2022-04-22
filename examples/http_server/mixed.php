@@ -93,7 +93,7 @@ while (true) {
                 }
             } catch (Exception $exception) {
                 var_dump($exception);
-                echo "第二层错误";
+                echo "第二层错误 ";
             } finally {
                 $connection->close();
             }
