@@ -24,6 +24,7 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
         'a1cce3d26cc15c00fcd0b3354bd72c88' => __DIR__ . '/..' . '/sabre/event/lib/Promise/functions.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '6714be961f4a45ae8b9a99d5d55c5d07' => __DIR__ . '/..' . '/tysonandre/var_representation_polyfill/src/var_representation.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '38143a9afc50997d55e4815db8489d1c' => __DIR__ . '/..' . '/rector/rector/bootstrap.php',
         'dc51568953534d6c54b08731e61104e2' => __DIR__ . '/..' . '/vimeo/psalm/src/functions.php',
@@ -74,6 +75,10 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
             'SwowTest\\' => 9,
             'Sabre\\Event\\' => 12,
         ),
+        'R' => 
+        array (
+            'Routes\\' => 7,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -97,6 +102,10 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
         array (
             'LanguageServerProtocol\\' => 23,
         ),
+        'F' => 
+        array (
+            'FastRoute\\' => 10,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -112,6 +121,7 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
         ),
         'A' => 
         array (
+            'App\\' => 4,
             'Amp\\ByteStream\\' => 15,
             'Amp\\' => 4,
             'AdvancedJsonRpc\\' => 16,
@@ -122,8 +132,8 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -221,6 +231,10 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
         array (
             0 => __DIR__ . '/..' . '/sabre/event/lib',
         ),
+        'Routes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/examples/FastRoute',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
@@ -277,6 +291,10 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
         array (
             0 => __DIR__ . '/..' . '/felixfbecker/language-server-protocol/src',
         ),
+        'FastRoute\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -304,6 +322,10 @@ class ComposerStaticInitd533d9e515021fb287db19790093f224
         'Composer\\Pcre\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/pcre/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/examples/app',
         ),
         'Amp\\ByteStream\\' => 
         array (

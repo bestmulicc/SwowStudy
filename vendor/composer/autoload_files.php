@@ -23,6 +23,7 @@ return array(
     'a1cce3d26cc15c00fcd0b3354bd72c88' => $vendorDir . '/sabre/event/lib/Promise/functions.php',
     '23c18046f52bef3eea034657bafda50f' => $vendorDir . '/symfony/polyfill-php81/bootstrap.php',
     '6714be961f4a45ae8b9a99d5d55c5d07' => $vendorDir . '/tysonandre/var_representation_polyfill/src/var_representation.php',
+    '253c157292f75eb38082b5acb06f3f01' => $vendorDir . '/nikic/fast-route/src/functions.php',
     'ec07570ca5a812141189b1fa81503674' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     '38143a9afc50997d55e4815db8489d1c' => $vendorDir . '/rector/rector/bootstrap.php',
     'dc51568953534d6c54b08731e61104e2' => $vendorDir . '/vimeo/psalm/src/functions.php',

@@ -91,8 +91,9 @@ while (true) {
                         break;
                     }
                 }
-            } catch (Exception) {
-                // you can log error here
+            } catch (Exception $exception) {
+                var_dump($exception);
+                echo "第二层错误";
             } finally {
                 $connection->close();
             }

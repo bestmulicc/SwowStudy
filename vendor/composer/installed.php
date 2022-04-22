@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'a01e1142e7ca19024a203128ff828ffc49098e5b',
         'name' => 'swow/swow',
         'dev' => true,
     ),
@@ -153,6 +153,15 @@
             'aliases' => array(),
             'reference' => '8bbc021a8edb2e4a7ea2f8ad4fa9ec9dce2fcb8d',
             'dev_requirement' => true,
+        ),
+        'nikic/fast-route' => array(
+            'pretty_version' => 'v1.3.0',
+            'version' => '1.3.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nikic/fast-route',
+            'aliases' => array(),
+            'reference' => '181d480e08d9476e61381e04a71b34dc0432e812',
+            'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
             'pretty_version' => 'v4.13.2',
@@ -554,12 +563,12 @@
             ),
         ),
         'swow/swow' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'a01e1142e7ca19024a203128ff828ffc49098e5b',
             'dev_requirement' => false,
         ),
         'swow/swow-library' => array(
@@ -638,7 +647,7 @@
             'install_path' => __DIR__ . '/../symfony/finder',
             'aliases' => array(),
             'reference' => '8661b74dbabc23223f38c9b99d3f8ade71170430',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/options-resolver' => array(
             'pretty_version' => 'v6.0.3',
