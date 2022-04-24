@@ -13,4 +13,9 @@ class IndexController
     {
         return 'Swow FastRoute Successful!';
     }
+
+    public function num(int $num)
+    {
+        return ;
+    }
 }
